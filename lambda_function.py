@@ -14,7 +14,7 @@ def lambda_handler(event, context):
     3. Infer congestion level
     4. Stream enriched records into Kinesis
     """
-
+    
     API_URL = "https://data.cityofnewyork.us/resource/i4gi-tjb9.json"
 
     try:
