@@ -14,12 +14,12 @@ def lambda_handler(event, context):
     3. Infer congestion level
     4. Stream enriched records into Kinesis
     """
-    
-    API_URL = "https://data.cityofnewyork.us/resource/i4gi-tjb9.json"
+    #fetching 100 records at once
+    API_URL = "https://data.cityofnewyork.us/resource/i4gi-tjb9.json?$limit=100"
 
     try:
         # 1. Fetch API data
-        response = requests.get(API_URL, timeout=10)
+        response = requests.get(API_URL, timeout=30)
         response.raise_for_status()
         traffic_data = response.json()
 
