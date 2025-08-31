@@ -19,7 +19,7 @@ def lambda_handler(event, context):
 
     try:
         # 1. Fetch API data
-        response = requests.get(API_URL, timeout=120)
+        response = requests.get(API_URL, timeout=300)
         response.raise_for_status()
         traffic_data = response.json()
 
