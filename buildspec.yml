@@ -7,12 +7,11 @@ phases:
       python: 3.9
     commands:
       - echo "Installing dependencies..."
-      - pip install --upgrade pip
       - pip install -r requirements.txt -t .
   build:
     commands:
-      - echo "Zipping Lambda function and dependencies..."
-      - zip -r function.zip .
+      - echo "build complete"
+
 artifacts:
   files:
-    - function.zip
+    - '**/*'
