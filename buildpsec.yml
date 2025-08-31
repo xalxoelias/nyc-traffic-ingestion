@@ -1,0 +1,24 @@
+
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.9
+    commands:
+      - pip install -r requirements.txt -t package/
+  build:
+    commands:
+      - echo "Zipping function and dependencies..."
+      - cp lambda_function.py package/
+      - cd package
+      - zip -r ../function.zip .
+  post_build:
+    commands:
+      - echo "Deploying function.zip to Lambda..."
+      - aws lambda update-function-code \
+          --function-name nycTrafficLambda \
+          --zip-file fileb://function.zip
+artifacts:
+  files:
+    - function.zip
